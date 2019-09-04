@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.8.3.js"></script>
+    <script>
+        $(function () {
+            $("#userid").blur(function (){
+            //获取用户名
+                var username = $(this).val();
+                $.ajax({
+                    url:"findUserServlet",
+                    data:{"username":username},
+                    type:"post",
+                    success:function (data) {
+                        //获取 span标签
+                        var span = $("#s_username");
+                        if(data.userExsit)
+                        {
+                            alert(data);
+                            //用户名存在
+                            span.css("color","red");
+                            span.html(data.msg)
+                        }
+                        else{
+                            //用户名不存在
+                            span.css("color","green");
+                            span.html(data.msg)
+                        }
+                    },
+                    dataType:"json"
+                });
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" id="userid" name="username" placeholder="请输入用户名"><span id="s_username"></span><br>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*1. json对象.键名
+        2. json对象["键名"]
+        3. 数组对象[索引]
+        4. 遍历*/
+    //1.定义基本格式
+        var person = {"name": "张三", age: 23, 'gender': true};
+
+        //输出
+        /*alert(person.name);
+        alert(person["name"]);*/
+        //遍历
+        /*for(var key in person)
+        {
+            alert(key+":"+person[key]);
+        }*/
+    //2.嵌套格式
+        var ps = [{"name": "张三", "age": 23, "gender": true},
+            {"name": "李四", "age": 24, "gender": true},
+            {"name": "王五", "age": 25, "gender": false}];
+        /*alert(ps[1].name);*/
+        //遍历
+        /*for (var i = 0; i <ps.length ; i++) {
+            var p=ps[i];
+            for(var key in p)
+            {
+                alert(key +":"+p[key]);
+            }
+        }*/
+    //3.嵌套格式
+        var persons ={"persons":
+                [
+                    {"name": "张三", "age": 23, "gender": true},
+                    {"name": "李四", "age": 24, "gender": true},
+                    {"name": "王五", "age": 25, "gender": false}
+                    ]
+                };
+        //alert(persons.persons[1].name);
+        //遍历
+        for(var key in persons)
+        {
+            var p=persons[key];
+            for (var i = 0; i <p.length ; i++) {
+                var pp=p[i];
+               for (var key2 in pp)
+               {
+                   alert(key2+":"+pp[key2]);
+               }
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
